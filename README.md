@@ -1,13 +1,11 @@
 ### Day2-After-Tomorrow
 CodeFest 2020 submission
 
-### Project SD-WAN
+### Project Day2-After Tomorrow
 
-The goals of this application are two fold. First is to show how simple it is to
-develop applications that extend the Cisco SD-WAN fabric by using the REST API
-it provides. Second is to help IT operations teams that are managing Cisco SD-WAN fabrics to make the transition to an automated and programmable infrastructure.
+We will use Python to poll a production vManage server for existing environmental, topological, and logical constructs of the fabric and present them to the user in an easy to consume manner. The goal will be to provide a straight-forward interface that allows the customer to quickly monitor the health of their SD-WAN environment, be alerted to urgent messages.
 
-The main application is a CLI tool through which users can see a list of the devices that are part of the fabric, the configuration templates, which devices are associated to which templates, and options to attach and detach configuration templates to specific devices.
+-- Future functionality
 
 Example usage:
 
@@ -19,35 +17,35 @@ devnet01.cisco.com    --sysip 1.1.1.1 --loopip 2.2.2.2/24 --geip
 
 To use this application you will need:
 
-* Python 3.6+
+* Python 3.7.5
 * Cisco SD-WAN 18+
-* A Cisco SD-WAN account with permissions to attach and detach templates
+* -- Future requirements
 
 ### Install and Setup
 
 Clone the code to your local machine.
 
 ```
-git clone https://github.com/ai-devnet/Getting-started-with-Cisco-SD-WAN-REST-APIs.git
-cd Getting-started-with-Cisco-SD-WAN-REST-APIs
+git clone https://github.com/logarby/Day2-After-Tomorrow
+cd Day2-After-Tomorrow
 ```
 
-Setup Python Virtual Environment (requires Python 3.6+)
+Setup Python Virtual Environment (requires Python 3.7+)
 
 ```
-python3.6 -m venv venv
+python3.7 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Setup local environment variables for your Cisco SD-WAN fabric. Provide the info for your Cisco SD-WAN environment.
+Setup local environment variables for your Cisco SD-WAN fabric. Provide the info for your Cisco SD-WAN environment.  Execute the following commands in bash in you virtual environment and then execute the env_var_check.py script to verify your environmental variables are set..
 
 Examples:
 
 ```
-export SDWAN_IP=10.10.30.190
-export SDWAN_USERNAME=admin
-export SDWAN_PASSWORD=admin
+export SDWAN_IP=sandboxsdwan.cisco.com
+export SDWAN_USERNAME=devnetuser
+export SDWAN_PASSWORD=Cisco123!
 ```
 
 ### Using the application
@@ -117,7 +115,3 @@ Attaching a template is as easy as calling the *attach* option of the applicatio
 To detach a template from a specific device you need to call the detach option of the application and pass in the parameters for the target device ID and the system-ip of that device:
 
 `./sdwan.py detach --target TargetID --sysip 1.1.1.1`
-
-### POSTMAN
-
-I've also included a POSTMAN environment and collection in the `postman` folder.
