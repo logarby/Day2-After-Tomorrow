@@ -1,16 +1,5 @@
-# Getting started with Cisco SD-WAN REST APIs
-
-The Cisco SD-WAN Solution (a.k.a Viptela) is a cloud-delivered overlay WAN architecture that facilitates digital and cloud transformation for enterprises. It significantly reduces WAN costs and time to deploy new services.
-
-Cisco SD-WAN builds a robust security architecture that's crucial for hybrid networks. It provides a strong policy framework.
-
-The solution has been deployed in every major industry. It solves many critical enterprise problems, including:
-
-* Establishing transport-independent WAN for lower cost and higher diversity
-* Meeting SLA for business-critical and real-time applications
-* Providing end-to-end segmentation for protecting critical enterprise compute resources
-* Extending seamlessly into the public cloud
-* Providing optimal user experience for SaaS applications
+### Day2-After-Tomorrow
+CodeFest 2020 submission
 
 ### Project SD-WAN
 
