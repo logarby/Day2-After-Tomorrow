@@ -71,3 +71,27 @@ Write points #: 288
 
 ```
 
+### Grafana
+
+Log into Grafana (http://localhost:3000) with the default credentials (username: admin, password: admin):
+
+![](images/fig1.png)
+
+Once logged in, we need to create our data sources. We will create a data source for each of the databases created by sdwan.py. There should be five total (username, device, interface BW, interface drops, dataCenter1a).
+
+Click “Create a data source”:
+
+![](images/fig2.png)
+
+Enter the inputs as shown:
+
+![](images/fig3.png)
+![](images/fig4.png)
+
+Click “Save & Test” and validate that the Data Source is loaded:
+
+![](images/fig5.png)
+
+Repeat this process for each data store (username, device, interface BW, interface drops, dataCenter1a)
+
+
