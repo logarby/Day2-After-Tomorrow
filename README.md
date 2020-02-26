@@ -89,4 +89,19 @@ Click “Save & Test” and validate that the Data Source is loaded:
 
 Repeat this process for each data store (username, device, interface BW, interface drops, dataCenter1a)
 
+Now click the "+" on the bar to the left and "import":
+
+![](images/fig6.png)
+
+Click "Upload .json file" and upload the dashboard.json file:
+
+![](images/fig7.png)
+
+Select the appropriate data stores then click "Import":
+
+![](images/fig8.png)
+
+Your dashboard should look like the following:
+
+![](images/fig9.png)
 
