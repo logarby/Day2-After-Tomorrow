@@ -53,21 +53,16 @@ Once installed and setup, you can now run the script sdwan.py
 python sdwan.py
 ```
 
-OUTPUT
+OUTPUT should look something like this
 
 ```
 Clearing databases
 Creating databases
-https://sdwandemo.cisco.com:8443/dataservice/device/monitor
-Create a retention policy
-Write points #: 23
-https://sdwandemo.cisco.com:8443/dataservice/admin/user
-Create a retention policy
-Write points #: 45
-Create a retention policy
-Write points #: 192
-Create a retention policy
-Write points #: 288
+Device write points #: 23
+Username write points #: 45
+interface BW write points #: 144
+Interface Drops write points #: 144
+DC 1a write points #: 14
 
 ```
 
