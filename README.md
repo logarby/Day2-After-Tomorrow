@@ -3,15 +3,9 @@ CodeFest 2020 submission
 
 ### Project Day2-After Tomorrow
 
-We will use Python to poll a production vManage server for existing environmental, topological, and logical constructs of the fabric and present them to the user in an easy to consume manner. The goal will be to provide a straight-forward interface that allows the customer to quickly monitor the health of their SD-WAN environment, be alerted to urgent messages.
+We will use Python to poll a production vManage server for existing environmental, topological, and logical constructs of the fabric and present them to the user in an easy to consume manner. The goal will be to provide a straight-forward interface that allows the customer to quickly monitor the health of their SD-WAN environment and be alerted to urgent messages.  You will do this by running a python script to retrieve data from vManage, store that data into an influxDB database, and display the data in a grafana dashboard.
 
 -- Future functionality
-
-Example usage:
-
-`./sdwan.py attach --template TemplateID --target TargetID --hostname
-devnet01.cisco.com    --sysip 1.1.1.1 --loopip 2.2.2.2/24 --geip
-3.3.3.3/24 --siteid 999`
 
 ### Requirements
 
@@ -19,7 +13,7 @@ To use this application you will need:
 
 * Python 3.7.5
 * Cisco SD-WAN 18+
-* -- Future requirements
+* Windows or OSX device
 
 ### Install and Setup
 
