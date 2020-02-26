@@ -1,0 +1,265 @@
+ How To Setup Your Own Computer
+
+To work on this lab from your own machine, you'll need to meet the following requirements.
+Client Pre-Reqs
+
+    Python
+        Python 3.7.3 or higher
+        virtual environment (highly suggested but not required)
+        pip3
+    "git" command line tools
+    Homebrew (macOS)
+
+Workstation Setup Instructions
+
+The labs in this module can be fully completed from an OS X or Windows workstation. To assist with completion, here are some suggested steps to prepare common platforms.
+
+If your environment requires a proxy server to access internet resources, be sure that it is configured correctly on your system, and adjust any steps/commands listed below as needed.
+macOS Sample Setup Instructions
+
+    Run these below commands in macOS command prompt to set the environment variables which stores vmanage details.
+
+    export vmanage_host="vmanage-ip"
+    export vmanage_port="vmanage-port"
+    export username="username"
+    export password="password"
+
+    git installation - https://git-scm.com/download/mac
+
+    Python 3.7.3 installation - https://www.python.org/downloads/release/python-373/
+
+    Python pip installation
+
+    curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
+    sudo python get-pip.py
+
+
+    Influxdb Installation : Install Influxdb by running below command
+
+    brew install influxdb
+
+    Grafana Installation : Install Grafana by running below command
+
+    brew install grafana
+
+
+    Verify homebrew/services is installed before starting the Grafana service.
+
+    brew tap homebrew/services
+
+
+    Run below command to start Grafana service.
+
+    brew services start grafana
+
+Windows Sample Setup Instructions
+
+    Run these below commands in Windows command prompt to set the environment variables which stores vmanage details.
+
+    set vmanage_host="vmanage-ip"
+    set vmanage_port="vmanage-port"
+    set username="username"
+    set password="password"
+
+
+    git installation - https://git-scm.com/download/win
+
+    Python 3.7 installation - https://www.python.org/downloads/release/python-373/
+    Be sure to check box for "Add Python to PATH" during the installer
+
+    InfluxDB Download link - https://dl.influxdata.com/influxdb/releases/influxdb-1.7.6_windows_amd64.zip
+
+    Download the InfluxDB software using the above link and extract the zip file and click on the influxd.exe file to run.
+
+    Minimize the command window pop-up and let influxd run in background.
+
+    Grafana Download link - https://dl.grafana.com/oss/release/grafana-6.1.6.windows-amd64.zip
+
+    Download the Grafana software using the above link and extract the zip file and **click on** the grafana-server.exe file to run.
+
+    Minimize the command window pop-up and let grafana server run in background. 
+
+
+    Welcome Loren Garby
+
+Learning Labs
+
+    DevNet Express
+    Tracks
+    Modules
+    Labs
+    Challenges
+    Help
+    Feedback
+
+SD-WAN Firewall Statistics API's
+
+    Step 1: Retrieve the firewall inspect counter values
+    Step 2: Resource URL Structure Components
+    Step 3: Use Influx DB to store firewall inspect counter values
+    Step 4: Plot a graph on Grafana Dashboard
+    Step 5: Summary 
+
+How To Setup Your Own Computer
+Introduction: Retrieve the firewall inspect counter values
+
+Cisco SD-WAN solution management component, vManage exposes the REST APIs and vManage UI is API driven which means any action we do on vManage UI would have associated RESTful API call. Using vManage REST APIs, we can export Alarms, Events, Statistics etc. from vManage to any 3rd Party Applications/Tools. If you are not familiar with what an API or REST is you can have a look for more Learning Labs that are covering these topics on https://developer.cisco.com/learning.
+
+By leveraging vManage REST APIs we can export statistics/counters from vManage to any Devops tools. In this learning lab, we will learn how to retrieve the firewall inspect counter values, store firewall inspect count values in a Time Series Database (TSDB) Influx DB and then plot it on to Grafana Dashboard
+
+The vManage REST API documentation can be found at the following link: vManage REST APIs documentation
+Objectives
+
+The objective of this Lab is to learn how to:
+
+    Retrieve the firewall inspect counter values.
+    Use Influx DB to store these values.
+    Plot a graph on Grafana Dashboard using this.
+
+Prerequisites
+
+To complete this Lab you need:
+
+Lab infrastructure to target API calls and code. For the purposes of this Learning Lab we will leverage the DevNet SD-WAN reservable Sandbox.
+Installation instructions on macOS
+
+You can also refer to the "Setup Your Own Computer" link at the top of this page for installation instructions.
+Python installation on macOS
+
+In order to install packages on macOS, it is easy to use the community maintained 'Homebrew' package manager.
+
+For detailed instructions on how to install Homebrew and Python v3.7 on macOS, please see : http://docs.python-guide.org/en/latest/starting/install3/osx/#install3-osx
+Clone the code to your local machine
+
+git clone https://github.com/CiscoDevNet/sd-wan_integration_with_devops_tools_code
+cd sd-wan_integration_with_devops_tools_code
+
+Setup Python Virtual Environment (requires Python 3.7)
+
+python3.7 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+Influxdb installation on macOSX
+
+Install Influxdb by running this command:
+
+brew install influxdb
+
+Grafana installation on macOSX
+
+Install Grafana by running this command:
+
+brew install grafana
+
+Verify homebrew/services is installed before starting the Grafana service.
+
+brew tap homebrew/services
+
+Run this command to start Grafana service:
+
+brew services start grafana
+
+Installation instructions on Windows
+
+You can also refer to the "Setup Your Own Computer" link at the top of this page for installation instructions.
+Python installation
+
+Install Python v3.7 by downloading the latest version of the installer from https://python.org/downloads.
+
+You will want to ensure that the Python3.exe interpreter is in your system search path, so that you can run Python from the command line in any directory. You can select this as an option during Python installation.
+
+    Run the python-3.7.3-amd64.exe file and enable Add Python 3.7 to PATH option and click Install Now.
+
+    python_1
+
+    Once the Python installation is complete, you will also need to clone locally to your machine the GitHub repo that contains the final version of the application. Open the Windows command prompt and install the Python requirements by using the command.
+
+Clone the code to your local machine
+
+git clone https://github.com/CiscoDevNet/sd-wan_integration_with_devops_tools_code
+cd sd-wan_integration_with_devops_tools_code
+
+Setup Python Virtual Environment (requires Python 3.7)
+
+py -m venv env
+.\env\Scripts\activate
+pip install -r requirements.txt
+
+Run these commands in Windows command prompt to set the environment variables which stores vmanage details:
+
+set vmanage_host=<vmanage-ip>
+set vmanage_port=<vmanage-port>
+set username=<username>
+set password=<password>
+
+Influx DB installation on Windows
+
+    Download the InfluxDB software from https://dl.influxdata.com/influxdb/releases/influxdb-1.7.6_windows_amd64.zip.
+    Extract the zip file and click the influxd.exe file to run.
+    Minimize the command window pop-up and let influxd run in background.
+
+Grafana installation on Windows
+
+    Download the Grafana software from https://dl.grafana.com/oss/release/grafana-6.1.6.windows-amd64.zip.
+    Extract the zip file and click the grafana-server.exe file to run.
+    Minimize the command window pop-up and let the grafana server run in background.
+
+Platforms and software used
+Component 	Software Version
+vManage 	18.4.0
+cEdge (CSR1000v) 	16.10.1
+InfluxDB 	1.7.6
+Grafana 	6.1.6
+
+Next steps: Resource URL Structure Components
+1 / 5
+
+FOLLOW DEVNET
+
+    Twitter
+    YouTube
+    GitHub
+
+DEVNET TOOLS
+
+    Sandbox
+    Developer Support
+
+DEV CENTERS
+
+    Collaboration
+    Cloud
+    Data Center
+    IoT
+    Networking
+    Security
+    Services
+
+COMMUNITY
+
+    Blog
+    Forum
+    Events
+
+JOIN DEVNET
+
+    Register
+
+CISCO RESOURCES
+
+    Cisco.com
+    Solution Partner Program
+    Marketplace
+    Cisco Support Community
+
+ABOUT DEVNET
+
+    Contact Us
+    Terms and Conditions
+    Privacy Statement
+    Cookie Statement
+    Trademark
+    General FAQs
+
+© Cisco Systems, Inc. 2014-2020
