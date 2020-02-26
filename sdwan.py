@@ -53,7 +53,6 @@ class rest_api_lib:
         login_url = base_url + login_action
         url = base_url + login_url
 
-### updated
         #URL for retrieving client token
         token_url = base_url + 'dataservice/client/token'
 
@@ -69,20 +68,17 @@ class rest_api_lib:
             sys.exit(0)
         login_token = sess.get(url=token_url, verify=False)
 
-#### updates token
         if login_token.status_code == 200:
             if b'<html>' in login_token.content:
                 print ("Login Token Failed")
                 exit(0)
 
         sess.headers['X-XSRF-TOKEN'] = login_token.content
-### 
         self.session[vmanage_host] = sess
 
     def get_request(self, mount_point):
         """GET request"""
         url = "https://%s:%s/dataservice/%s"%(self.vmanage_host, self.vmanage_port, mount_point)
-        print(url)
 
         response = self.session[self.vmanage_host].get(url, verify=False)
 
@@ -91,18 +87,13 @@ class rest_api_lib:
     def post_request(self, mount_point, payload, headers={'Content-type': 'application/json', 'Accept': 'application/json'}):
         """POST request"""
         url = "https://%s:%s/dataservice/%s"%(self.vmanage_host, self.vmanage_port, mount_point)
-        #print(url)
         payload = json.dumps(payload)
-        #print (payload)
 
         response = self.session[self.vmanage_host].post(url=url, data=payload, headers=headers, verify=False)
-        #print(response.text)
-        #exit()
-        #data = response
         return response
 
 #add DBs in list form
-databases = ['hostnames', 'username', 'interface_bw', 'interface_drops', 'CloudExpress'] 
+databases = ['device', 'username', 'interface_bw', 'interface_drops', 'dataCenter1a']
 
 #Calls database.py, passes DB list, creates DBs in influx on local machine
 database.create_db(databases)
@@ -110,9 +101,9 @@ database.create_db(databases)
 #Establishes communication and authenticates to vManage
 vmanage_session = rest_api_lib(vmanage_host, vmanage_port, username, password)
 
-#Calls specific functions in Attributes.py 
+#Calls specific functions in Attributes.py
 
-attributes.hostnames(vmanage_session)
+attributes.device(vmanage_session)
 
 attributes.username(vmanage_session)
 
@@ -120,6 +111,4 @@ attributes.interface_bw(vmanage_session)
 
 attributes.interface_drops(vmanage_session)
 
-attributes.CloudExpress(vmanage_session)
-
-
+attributes.dataCenter1a(vmanage_session)
